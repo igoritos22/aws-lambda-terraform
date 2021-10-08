@@ -7,6 +7,15 @@ resource "aws_lambda_function" "traffic_exposed" {
     runtime = var.runtime
     timeout     = var.timeout
     memory_size = var.memory_size
+
+    environment {
+        variables = {
+            SecOpsTopicArn = aws_sns_topic.user_updates.arn
+        }
+    }
+
+    depends_on = [aws_sns_topic.user_updates]
+
 }
 resource "aws_cloudwatch_event_rule" "rate_minutes" {
     name = var.event_name

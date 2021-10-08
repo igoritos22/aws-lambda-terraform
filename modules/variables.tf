@@ -49,5 +49,16 @@ variable source_code_hash {
   description = "arquivo da função lambda compatada hasbase"
 }
 
+variable sns_endpoint {
+  type        = string
+  description = "email dos subscribers do topic sns"
+}
+
+variable sns_name {
+  type        = string
+  description = "Nome do topico SNS"
+}
+
+
 
 

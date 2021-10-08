@@ -4,7 +4,11 @@ from botocore.exceptions import ClientError
 ec2 = boto3.resource('ec2')
 client = boto3.client('ec2')
 
+globalVars  = {}
+globalVars['SecOpsTopicArn']        = ""
+
 def lambda_handler(event, context):
+    globalVars['SecOpsTopicArn']=str(os.getenv('SecOpsTopicArn'))
     response = client.describe_security_groups()
     #print(response)
     snsClient = boto3.client('sns')
@@ -30,8 +34,8 @@ def lambda_handler(event, context):
                     remediateSgs['SGRemediadosViaLambda'].append(response["SecurityGroups"][i]["GroupName"])
                     
                     try:
-                        snsClient.get_topic_attributes( TopicArn= "arn:aws:sns:sa-east-1:354355251500:SecOpsTopic" )
-                        snsClient.publish(TopicArn = "arn:aws:sns:sa-east-1:354355251500:SecOpsTopic", Message = json.dumps(remediateSgs, indent=4) )
+                        snsClient.get_topic_attributes( TopicArn= globalVars['SecOpsTopicArn'] )
+                        snsClient.publish(TopicArn = globalVars['SecOpsTopicArn'], Message = json.dumps(remediateSgs, indent=4) )
 
                     except ClientError as e:
                         remediateSgs = {'SGRemediadosViaLambda':[]}

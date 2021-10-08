@@ -10,4 +10,6 @@ module "lambda_exposed_alltraffic" {
   event_name          = "a_cada_hora"
   event_description   = "Dispara a cada 1hr"
   schedule_expression = "rate(59 minutes)"
+  sns_name            = "SNSSecOps"
+  sns_endpoint        = "iluiz.sousa@gmail.com"
 }
