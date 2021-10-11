@@ -45,7 +45,7 @@ No requirements.
 
 ## Modules
 
-No modules.
+- AWS Lambda Functions
 
 ## Resources
 
