@@ -1,4 +1,4 @@
-# AWS Lambda Functions
+# Lambda Security Automation via Terraform
 Esse é um projeto de um Módulo Terraform para deploy de funções Lambdas através de gatilhos do Cloudwatch e envio de notificações via SNS
 
 ## Descriçao do Projeto
@@ -17,10 +17,10 @@ Esse módulo já cria a role necessária para a execução da Função Lambda
 Não é necesssário habilitar nenhum recurso na console da AWS
 
 ## Requirements
-- [aws cli]() | configuração de autenticação via profile do arquivo credentials
-- [terraform]() | provisionamento dos recursos
-- [função lambda] | função lambda que irá executar no ambiente
-- [boto3]() | AWS boto3. Biblioteca necessária para interagir com os recursos da AWS via python.
+- [aws cli](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-chap-install.html) | configuração de autenticação via profile do arquivo credentials
+- [terraform](https://www.terraform.io/) | provisionamento dos recursos
+- [função lambda](https://aws.amazon.com/pt/lambda/) | função lambda que irá executar no ambiente
+- [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) | AWS boto3. Biblioteca necessária para interagir com os recursos da AWS via python.
 
 Este repositório contém a função lambda que identifica e remove regras que expõe todo tráfego de rede através de Security Groups.
 
