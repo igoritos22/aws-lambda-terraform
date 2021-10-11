@@ -1,15 +1,28 @@
-# AWS Lambda Functions - vs0
-Módulo Terraform para deploy de funções Lambdas através de gatilhos do Cloudwatch e envio de notificações via SNS
+# AWS Lambda Functions
+Esse é um projeto de um Módulo Terraform para deploy de funções Lambdas através de gatilhos do Cloudwatch e envio de notificações via SNS
 
-## Descriçao do módulo
-Esse módulo tem o objetivo de entregar no seu final uma função Lambda para automatizar o processo de correção de incidente de Segurança.
+## Descriçao do Projeto
+Esse projeto tem o objetivo de entregar no seu final uma função Lambda para automatizar o processo de correção de incidente de Segurança.
 O incidente em questão trata-se da exposição de recursos através de grupos de Segurança com regras totalmente permissivas, por exemplo: all traffico to 0.0.0.0/0.
+A função lamba executa de tempos em tempos no ambiente afim de localizar security groups vulneraveis, uma vez identificado, a função remove a regra do security group e informa via email o time/pessoal responsavel
+
+## Motivadores
+Manter o ambiente cloud seguro é um grande desafio. Automatizar processos, principalmente resposta a incidente de Segurança é um grande passo para os objetivos do time de Segurança.
 
 ## Cuidados
 A função Lambda executa de tempos em tempos e faz alterações a nivel da conta AWS. Mapeie bem os impactos antes de usar.
 
 # Notes
 Esse módulo já cria a role necessária para a execução da Função Lambda
+Não é necesssário habilitar nenhum recurso na console da AWS
+
+## Requirements
+- [aws cli]() | configuração de autenticação via profile do arquivo credentials
+- [terraform]() | provisionamento dos recursos
+- [função lambda] | função lambda que irá executar no ambiente
+- [boto3]() | AWS boto3. Biblioteca necessária para interagir com os recursos da AWS via python.
+
+Este repositório contém a função lambda que identifica e remove regras que expõe todo tráfego de rede através de Security Groups.
 
 ## Usage
 
@@ -32,10 +45,6 @@ module "lambda_exposed_alltraffic" {
   sns_endpoint        = "iluiz.sousa@gmail.com"
 }
 ```
-
-## Requirements
-
-No requirements.
 
 ## Providers
 
@@ -86,3 +95,4 @@ No outputs.
 # To do
 - Personalizar modulo para o user escolher quais recursos ele deseja deployar
 - Separar os Recursos de Cloudwatch e SNS desse módulo e declara-los num módulo independente
+- Alterar a trigger da função lambda para disparar mediante um alarme de detecção de alteração no Security Group.
