@@ -1,5 +1,4 @@
 # AWS Lambda Functions - vs0
-
 Módulo Terraform para deploy de funções Lambdas através de gatilhos do Cloudwatch e envio de notificações via SNS
 
 ## Descriçao do módulo
@@ -7,8 +6,10 @@ Esse módulo tem o objetivo de entregar no seu final uma função Lambda para au
 O incidente em questão trata-se da exposição de recursos através de grupos de Segurança com regras totalmente permissivas, por exemplo: all traffico to 0.0.0.0/0.
 
 ## Cuidados
-
 A função Lambda executa de tempos em tempos e faz alterações a nivel da conta AWS. Mapeie bem os impactos antes de usar.
+
+# Notes
+Esse módulo já cria a role necessária para a execução da Função Lambda
 
 ## Usage
 
@@ -85,6 +86,3 @@ No outputs.
 # To do
 - Personalizar modulo para o user escolher quais recursos ele deseja deployar
 - Separar os Recursos de Cloudwatch e SNS desse módulo e declara-los num módulo independente
-
-# Notes
-Esse módulo já cria a role necessária para a execução da Função Lambda
