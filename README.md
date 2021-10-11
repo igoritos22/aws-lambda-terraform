@@ -26,9 +26,15 @@ Este repositório contém a função lambda que identifica e remove regras que e
 
 ## Usage
 
-### Exemplo Declaração Simples
+### Exemplo Declaração Simples | main.tf
 
 ```hcl
+provider "aws" {
+  region  = "us-east-2"
+  profile = "dev" 
+  #esse atributo profile faz referencia ao arquivo credential do .aws
+}
+
 module "lambda_exposed_alltraffic" {
   source              = "./modules"
   function_name       = "rm_ingress_rule_alltraffic_exposed"
