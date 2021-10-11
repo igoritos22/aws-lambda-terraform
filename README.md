@@ -1,6 +1,6 @@
 # Lambda Security Automation via Terraform
 
-![alt text](./SECOPS.png)
+![plot](./SECOPS.png)
 
 Esse é um projeto de um Módulo Terraform para deploy de funções Lambdas através de gatilhos do Cloudwatch e envio de notificações via SNS
 
