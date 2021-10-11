@@ -1,2 +1,6 @@
 .terraform.lock.hcl
 .terraform
+provider.tf
+./provider.tf
+./variable.tf
+variable.tf
