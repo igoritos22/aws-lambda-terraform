@@ -1,4 +1,1 @@
 fileignoreconfig:
-- filename: credentials.txt
-  checksum: ccf374aa088ca583665dd69f4da2bef7169a1d3a130d38eb787b9505985ce6ac
-  ignore_detectors: [filename]
